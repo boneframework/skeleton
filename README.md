@@ -1,9 +1,9 @@
 # bone framework
-[![Latest Stable Version](https://poser.pugx.org/delboy1978uk/boneframework/v/stable)](https://packagist.org/packages/delboy1978uk/boneframework) [![Total Downloads](https://poser.pugx.org/delboy1978uk/bone/downloads)](https://packagist.org/packages/delboy1978uk/boneframework) [![Latest Unstable Version](https://poser.pugx.org/delboy1978uk/boneframework/v/unstable)](https://packagist.org/packages/delboy1978uk/boneframework) [![License](https://poser.pugx.org/delboy1978uk/boneframework/license)](https://packagist.org/packages/delboy1978uk/boneframework)<br />
-![build status](https://github.com/delboy1978uk/boneframework/actions/workflows/master.yml/badge.svg) [![Code Coverage](https://scrutinizer-ci.com/g/delboy1978uk/boneframework/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/delboy1978uk/boneframework/?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/delboy1978uk/boneframework/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/delboy1978uk/boneframework/?branch=master)<br />
+[![Latest Stable Version](https://poser.pugx.org/boneframework/skeleton/v/stable)](https://packagist.org/packages/delboy1978uk/boneframework) [![Total Downloads](https://poser.pugx.org/boneframework/skeleton/downloads)](https://packagist.org/packages/boneframework/skeleton) [![License](https://poser.pugx.org/delboy1978uk/boneframework/license)](https://packagist.org/packages/delboy1978uk/boneframework)<br />
+![build status](https://github.com/boneframework/skeleton/actions/workflows/master.yml/badge.svg) [![Code Coverage](https://scrutinizer-ci.com/g/boneframework/skeleton/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/boneframework/skeleton/?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/boneframework/skeleton/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/boneframework/skeleton/?branch=master)<br />
 Be ye wantin a PHP framework peppered with local pirate lingo?<br />
 It be the most fearsome framework in the seven seas!<br />
-http://boneframework.delboysplace.co.uk
+http://github.com/boneframework
 
 ## features
 - PSR-7 http messaging 
@@ -19,7 +19,7 @@ http://boneframework.delboysplace.co.uk
 We recommend using the bundled Docker environment, however you can use your own set up, see the `build/` folder for more
 details on our default VirtualHost config etc. If you already have a setup, install via composer:
 ```
-composer create-project delboy1978uk/boneframework your/path/here
+composer create-project boneframework/skeleton your/path/here
 ```
 #### via docker
 The Docker dev environment saves you from all the usual devops nonsense. You can add `awesome.scot` to your `/etc/hosts` 
@@ -28,8 +28,11 @@ to `127.0.0.1`. Clone `delboy1978uk/lamp`, then replace the code folder `delboy1
 git clone https://github.com/delboy1978uk/lamp myproject
 cd myproject
 rm -fr code
-git clone https://github.com/delboy1978uk/boneframework code
-docker-compose up
+git clone https://github.com/boneframework/skeleton code
+```
+To start the docker server environment:
+```
+bin/start
 ```
 Then browse to `https://awesome.scot`, and you will see the site running.
 
@@ -38,35 +41,35 @@ SMTP port `1025` and all outgoing mails will appear in the Mailhog outbox.
 
 MariaDB is running, on host `mariadb` (see `docker-compose.yml`), and `config/bone-db.php`).
 
-To "SSH" into your server in order to run PHP commands like composer etc, type the following in a fresh terminal window
-(remember on Windows & Mac you also need to run `eval $(docker-machine env)` to import the environment vars)
+To "SSH" into your server in order to run PHP commands like composer etc, type the following in a fresh terminal window.
 ```
-docker-compose exec php /bin/bash
+bin/terminal php       // for the PHP container
+bin/terminal mariadb   // for the DB container
 ```
-To shut down your server, CTRL-C out, then type `docker-compose down`.
+To shut down your server, CTRL-C out, then type `bin/stop`.
 ## a quick introduction to bone framework
 #### skeleton project files
 There are a few folders and files in your project, here's a quick description:
 - config (Configuration for your application)
 - data (Files your project will use (translations, cache, uploads, etc))
 - public (The usual index.php endpoint and front end assets like css and images and js)
-- src (Your application ackages live in here)
+- src (Your application packages live in here)
 - tests (Because it's nice knowing your code works)
 - vendor (Third party composer libs, don't edit, don't commit!)
 #### bone framework application cycle
 Upon launching Bone Framework (`public/index.php`), the application does a few things:
 - Starts a session
-- Loads the config from the config folder (different folders for different environments can be used)
+- Loads the config from the config folder (different folders for different environments can be used, or environment vars)
 - Registers bone framework core packages
 - Registers packages from the `config/packages.php` into the DI container
 - Adds any site wide middleware configured in `config/middleware.php`
 - Dispatches a Request, returns a Response
 ## config
-You can drop in any number of .php files into the config/ folder. Make sure they return an array with the config . You 
-can override configuration based on environment var APPLICATION_ENV, so for instance if the environment was production 
+You can drop in any number of `.php` files into the `config/` folder. Make sure they return an array with the config . You 
+can override configuration based on environment var `APPLICATION_ENV`, so for instance if the environment was production 
 it would load the additional config the production subdirectory.
 
-There are several config files by default:
+There are several config files included, some are for optional bone packages and may be removed :
 ```
 bone-db.php 
 bone-firewall.php 
