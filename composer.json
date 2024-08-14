@@ -1,5 +1,5 @@
 {
-  "name": "delboy1978uk/boneframework",
+  "name": "boneframework/skeleton",
   "description": "Bone Framework",
   "authors": [
     {
@@ -19,7 +19,7 @@
     "psr-15",
     "psr15"
   ],
-  "homepage": "https://github.com/delboy1978uk/boneframework",
+  "homepage": "https://github.com/boneframework",
   "license": "MIT",
   "require": {
     "php": "^8.2",
