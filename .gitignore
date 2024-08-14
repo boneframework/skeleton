@@ -10,3 +10,7 @@
 error_log
 vendor/*
 c3tmp/*
+tests/_output/*
+data/cache/*
+data/proxies/*
+
