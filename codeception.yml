@@ -1,16 +1,22 @@
 actor: Tester
+
+namespace: Tests
+support_namespace: Support
 paths:
     tests: tests
-    log: tests/_output
-    data: tests/_data
-    helpers: tests/_support
-bootstrap: _bootstrap.php
+    output: tests/_output
+    data: tests/Support/Data
+    support: tests/Support
+    envs: tests/_envs
+actor_suffix: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
 settings:
     colors: true
     memory_limit: 1024M
 coverage:
     enabled: true
-    remote: false
     whitelist:
         include:
             - src/App/Controller/*
