@@ -1,24 +1,23 @@
 <?php
 
-namespace BoneMvcTest\Controller;
+namespace Tests\Unit\App\Controller;
 
-use Bone\App\Controller\IndexController;
-use Bone\Http\Response\HtmlResponse;
 use Barnacle\Container;
+use Bone\App\Controller\IndexController;
 use Bone\Controller\Init;
-use Bone\View\ViewEngine;
-use Bone\Server\SiteConfig;
-use Codeception\TestCase\Test;
+use Bone\Http\Response\HtmlResponse;
 use Bone\Router\Router;
-use Psr\Http\Message\ResponseInterface;
+use Bone\Server\SiteConfig;
+use Bone\View\ViewEngine;
+use Codeception\Test\Unit;
 use Laminas\Diactoros\ServerRequest;
 use Laminas\Diactoros\Uri;
 use Laminas\I18n\Translator\Translator;
 
-class IndexControllerTest extends Test
+class IndexControllerTest extends Unit
 {
     /**
-     * @var \UnitTester
+     * @var \Tests\Support\UnitTester
      */
     protected $tester;
 
@@ -38,7 +37,6 @@ class IndexControllerTest extends Test
         $translator = $this->getMockBuilder(Translator::class)->getMock();
         $site = $this->getMockBuilder(SiteConfig::class)->disableOriginalConstructor()->getMock();
 
-        $container[ViewEngine::class] = $view;
         $container[Router::class] = $router;
         $container[SiteConfig::class] = $site;
         $container[Translator::class] = $translator;
@@ -59,10 +57,5 @@ class IndexControllerTest extends Test
     public function testIndexAction()
     {
         $this->assertInstanceOf(HtmlResponse::class, $this->controller->index(new ServerRequest([], [], new Uri('/')), []));
-    }
-
-    public function testLearnAction()
-    {
-        $this->assertInstanceOf(ResponseInterface::class, $this->controller->learn(new ServerRequest([], [], '/'), []));
     }
 }

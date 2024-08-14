@@ -8,10 +8,10 @@ class_name: AcceptanceTester
 modules:
     enabled:
         - PhpBrowser
-        - AcceptanceHelper
+        - Tests\Support\Helper\AcceptanceHelper
     config:
         PhpBrowser:
-            url: 'http://192.168.99.100'
+            url: 'http://awesome.scot'
 env:
     travis:
          modules:

@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+use Tests\Support\AcceptanceTester;
+
 $I = new AcceptanceTester($scenario);
 $I->wantTo("ensure we get 404 messages!");
 $I->amOnPage('/en_PI/shiver/me/timbers');
