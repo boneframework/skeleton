@@ -10,5 +10,3 @@ return [
     'error_reporting' => -1,
     'display_errors' => true,
 ];
-
-error_log('HELLO');

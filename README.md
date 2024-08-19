@@ -16,27 +16,30 @@ http://github.com/boneframework
 
 ## installation
 #### via composer
-We recommend using the bundled Docker environment, however you can use your own set up, see the `build/` folder for more
-details on our default VirtualHost config etc. If you already have a setup, install via composer:
+We recommend using our Docker environment, however you can use your own setup, install via composer:
 ```
 composer create-project boneframework/skeleton your/path/here
+cp your/path/here/.env.example your/path/here/.env
 ```
 #### via docker
-The Docker dev environment saves you from all the usual devops nonsense. You can add `awesome.scot` to your `/etc/hosts` 
-to `127.0.0.1`. Clone `delboy1978uk/lamp`, then replace the code folder `delboy1978uk/boneframework`, then start it up.
+The Docker dev environment saves you from all the usual devops nonsense. Clone `boneframework/lamp`, then replace 
+the code folder `boneframework/skeleton`, then start it up.
 ```
-git clone https://github.com/delboy1978uk/lamp myproject
+git clone https://github.com/boneframework/lamp myproject
 cd myproject
-rm -fr code
+rm -fr code  // remove lamp stack default placeholder page
 git clone https://github.com/boneframework/skeleton code
+cp code/.env.example code .env
+bin/setdomain yourdomain.com  // optional, default dev domain is awesome.bone
 ```
+Add `127.0.0.1 awesome.bone` to your `/etc/hosts` (or your custom domain).
 To start the docker server environment:
 ```
 bin/start
 ```
-Then browse to `https://awesome.scot`, and you will see the site running.
+Then browse to `https://awesome.bone`, and you will see the site running.
 
-The development also has Mailhog running at `https://awesome.scot:8025`, so you can configure any dev emails to use 
+The development also has Mailhog running at `https://awesome.bone:8025`, so you can configure any dev emails to use 
 SMTP port `1025` and all outgoing mails will appear in the Mailhog outbox.
 
 MariaDB is running, on host `mariadb` (see `docker-compose.yml`), and `config/bone-db.php`).
