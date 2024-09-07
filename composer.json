@@ -27,7 +27,7 @@
     "ext-intl": "*",
     "ext-json": "*",
     "ext-pdo": "*",
-    "delboy1978uk/bone": "^3.10",
+    "boneframework/bone": "^3.11",
     "delboy1978uk/cdn": "^2.0",
     "delboy1978uk/image": "^2.1"
   },
