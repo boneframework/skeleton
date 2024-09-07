@@ -30,16 +30,16 @@ cd myproject
 rm -fr code  // remove lamp stack default placeholder page
 git clone https://github.com/boneframework/skeleton code
 cp code/.env.example code .env
-bin/setdomain yourdomain.com  // optional, default dev domain is awesome.bone
+bin/setdomain yourdomain.com  // optional, default dev domain is boneframework.docker
 ```
-Add `127.0.0.1 awesome.bone` to your `/etc/hosts` (or your custom domain).
+Add `127.0.0.1 boneframework.docker` to your `/etc/hosts` (or your custom domain).
 To start the docker server environment:
 ```
 bin/start
 ```
-Then browse to `https://awesome.bone`, and you will see the site running.
+Then browse to `https://boneframework.docker`, and you will see the site running.
 
-The development also has Mailhog running at `https://awesome.bone:8025`, so you can configure any dev emails to use 
+The development also has Mailhog running at `http://boneframework.docker:8025`, so you can configure any dev emails to use 
 SMTP port `1025` and all outgoing mails will appear in the Mailhog outbox.
 
 MariaDB is running, on host `mariadb` (see `docker-compose.yml`), and `config/bone-db.php`).
@@ -156,12 +156,12 @@ method is essentially a PSR-15 Server Request Handler Interface `https://www.php
 ## db
 Set your default db credentials in the main config/bone-db.php, and any environment specific configs in a subdirectory
 ```php
-    'db' => array(
+    'db' => [
         'host' => '127.0.0.1',
         'database' => 'bone',
         'user' => 'leChuck',
         'pass' => 'bigWh00p',
-    ),
+    ],
 ```
 In your package class, you can gert the connection from the container using `$c->get(PDO::class)`.
 
