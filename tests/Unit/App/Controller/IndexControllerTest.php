@@ -9,7 +9,7 @@ use Bone\Router\Router;
 use Bone\Server\SiteConfig;
 use Bone\View\ViewEngine;
 use Codeception\Test\Unit;
-use Controller\IndexController;
+use App\Controller\IndexController;
 use Laminas\Diactoros\ServerRequest;
 use Laminas\Diactoros\Uri;
 use Laminas\I18n\Translator\Translator;
