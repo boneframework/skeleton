@@ -27,32 +27,31 @@
             <div class="col-lg-8 mx-auto">
                 <h2 class="text-muted"><?= $this->t('installation'); ?></h2>
                 <p class="text-muted">There are two ways to get started, if you already have a LAMP stack set up, then
-                    you can install using Composer. However, Bone Framework comes with a Docker LAMP stack out of the
-                    box,
-                    so it's even easier to get up and running.</p>
+                    you can install using Composer. However, Bone Framework comes with a Docker LAMP stack, so it's even
+                    easier to get up and running.</p>
                 <h4 class="text-muted">...via Composer</h4>
                 <p class="text-muted"><?= $this->t('learn.composer'); ?>
                     <a target="_blank"
                        href="https://getcomposer.org/">Composer</a>! <?= $this->t('learn.install.bone'); ?>
                 </p>
-                <code>composer create-project delboy1978uk/boneframework your/path/here</code>
-                <br>&nbsp;
-                <p class="text-muted"><?= $this->t('learn.globally'); ?></p>
-                <code>php composer.phar create-project delboy1978uk/boneframework your/path/here</code>
+                <code>composer create-project boneframework/skeleton your/path/here</code>
                 <br class="mb50">
                 <h2 class="text-muted"><?= $this->t('docker.devbox'); ?></h2>
-                <p class="text-muted">To install Bone via Docker, instead use Git to clone the project</p>
-                <div class="code tl">git clone https://github.com/delboy1978uk/boneframework yourProjectName</div>
-                <p class="text-muted"><?= $this->t('docker.about'); ?><br class="mb20"/>
-                    <code>awesome.scot 192.168.99.100</code></p>
+                <p class="text-muted">Install the Bone Framework LAMP stack</p>
+                <div class="code tl">git clone https://github.com/boneframework/lamp yourProjectName</div>
+                <p class="text-muted">cd into the folder and run the following:<br class="mb20"/>
+                <code>bin/start</code><br>&nbsp;<br>
+                Now you can browse to <span class="code">https://localhost</span> (you can set the domain, see boneframework/lamp)
+                </p>
+                <p class="text-muted">To stop the server, press <span class="code">^C</span> and run <span class="code">^bin/stop</span></p>
+                <p class="text-muted">Remove the placeholder website folder <span class="code">code/</span> and install
+                    Bone Framework in its place </p>
                 <div class="code tl">
-                    docker-machine start <br>
-                    eval $(docker-machine env) <br>
-                    cd /path/to/project <br>
-                    docker-compose up <br>
+                    rm -fr code
+                    composer create-project boneframework/skeleton code
+                    bin/start
                 </div>
-                <br>
-                Then you can access the site at <span class="code">https://awesome.scot</span> in your browser.
+                Now you can browse to <span class="code">https://localhost</span> and will see Bone Framework is installed.
             </div>
         </div>
     </div>
@@ -62,10 +61,11 @@
     <div class="row">
         <div class="col-lg-8 mx-auto">
             <h2 class="text-center pt20 text-muted">Config</h2>
-            <p class="text-muted">You can drop in any number of .php files into the <span class="code">config/</span> folder. Make sure they
+            <p class="text-muted">Copy <span class="code">.env.example</span> to <span class="code">.env</span>.
+                You can drop in any number of .php files into the <span class="code">config/</span> folder. Make sure they
                 return an array with the config. You can override configuration based on environment var
                 <span class="code">APPLICATION_ENV</span>,
-                so for instance if the environment was production it would load the additional config within the
+                so for instance, if the environment was production it would load the additional config within the
                 production subdirectory. There are default configs for optional packages such as bone-mail which have
                 been added for convenience. </p>
             <p class="text-muted">The configurations you will probably want to take a look at first are the
