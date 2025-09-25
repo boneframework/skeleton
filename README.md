@@ -92,17 +92,13 @@ Packages are a key component in a Bone Framework application. You will see in th
 which Packages are currently running on the framework. Take note that the order is important,
 as packages may have a dependency which it needs defined from another package. Have a look inside 
 `src/App/AppPackage.php`:
+
 ```php
 <?php
 
 namespace Bone\App;
 
-use Bone\App\Controller\IndexController;
-use Bone\Controller\Init;
-use Bone\Router\Router;
-use Bone\Router\RouterConfigInterface;
-use Barnacle\RegistrationInterface;
-use Barnacle\Container;
+use Barnacle\Container;use Barnacle\RegistrationInterface;use Bone\Controller\Init;use Bone\Router\Router;use Bone\Router\RouterConfigInterface;use Controller\IndexController;
 
 class AppPackage implements RegistrationInterface, RouterConfigInterface
 {

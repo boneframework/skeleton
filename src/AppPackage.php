@@ -1,14 +1,14 @@
 <?php
 
-namespace Bone\App;
+namespace App;
 
-use Bone\App\Controller\IndexController;
+use Barnacle\Container;
+use Barnacle\RegistrationInterface;
 use Bone\Controller\Init;
 use Bone\Router\Router;
 use Bone\Router\RouterConfigInterface;
-use Barnacle\RegistrationInterface;
-use Barnacle\Container;
 use Bone\View\ViewRegistrationInterface;
+use App\Controller\IndexController;
 
 class AppPackage implements RegistrationInterface, RouterConfigInterface, ViewRegistrationInterface
 {

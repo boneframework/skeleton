@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\App;
 
-use Bone\App\AppPackage;
+use AppPackage;
 use Codeception\Test\Unit;
 
 class AppPackageTest extends Unit

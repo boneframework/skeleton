@@ -1,6 +1,6 @@
 <?php
 
-use Bone\App\AppPackage;
+use App\AppPackage;
 
 return [
     'packages' => [

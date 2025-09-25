@@ -37,11 +37,15 @@
   },
   "autoload": {
     "psr-4": {
-      "Bone\\App\\": "src/App/",
-      "Bone\\Test\\": "tests/unit/",
+      "App\\": "src/",
       "Fixtures\\": "data/fixtures/"
     },
     "classmap": ["data/proxies/"]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Bone\\Test\\": "tests/unit/"
+    }
   },
   "config": {
     "allow-plugins": {
