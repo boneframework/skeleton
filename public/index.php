@@ -30,10 +30,10 @@
 //                                     (____/ \__/ \_)__)(____)
 
 
-\chdir(\dirname(__DIR__));
+chdir(\dirname(__DIR__));
 
-if (!\defined('APPLICATION_PATH')) {
-    \define('APPLICATION_PATH', dirname(__DIR__) . '/');
+if (!defined('APPLICATION_PATH')) {
+    define('APPLICATION_PATH', dirname(__DIR__) . '/');
 }
 
 /** I be autoloadin' th' composer or else shiver me timbers */
@@ -47,7 +47,6 @@ require_once 'vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(APPLICATION_PATH);
 $dotenv->safeLoad();
 define('APPLICATION_ENV', $_ENV['APPLICATION_ENV'] ?? 'production');
-
 
 /** Time t'begin th'voyage me hearties!*/
 Bone\Application::ahoy()->setSail();
