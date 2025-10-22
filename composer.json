@@ -51,5 +51,10 @@
     "allow-plugins": {
       "phpro/grumphp": false
     }
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "cp -n .env.example .env"
+    ]
   }
 }
