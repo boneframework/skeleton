@@ -1,10 +1,10 @@
 <?php
+/** @var \Del\Entity\User $user */
+/** @var string $content */
+
 use Del\Cdn;
 use Del\Icon;
 use Del\Image;
-/**
- * @var \Del\Entity\User $user
- */
 $person = $user->getPerson();
 $image = $person->getImage() ? new Image('data/uploads/' . $person->getImage()) : null;
 
@@ -115,14 +115,7 @@ $image = $person->getImage() ? new Image('data/uploads/' . $person->getImage()) 
             </div>
 
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item">
-                        <a href="/admin/somewhere" class="nav-link">
-                            <i class="nav-icon fa fa-calendar"></i>
-                            <p>Some Admin Link!</p>
-                        </a>
-                    </li>
-                </ul>
+                <?= $this->adminLinks() ?>
             </nav>
         </div>
     </aside>

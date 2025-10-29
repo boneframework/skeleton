@@ -91,6 +91,7 @@ use Del\Icon;
             <?= Icon::CERTIFICATE ?> MIT License</p>
     </div>
 </footer>
+
 <!-- Bootstrap core JS-->
 <?= Cdn::bootstrapJavascript() ?>
 <script type="text/javascript">

@@ -8,5 +8,5 @@ return [
     ],
     'error_log' => '/proc/self/fd/2',
     'error_reporting' => -1,
-    'display_errors' => true,
+    'display_errors' => false,
 ];

@@ -8,5 +8,5 @@ return [
     ],
     'error_log' => 'data/logs/error_log',
     'error_reporting' => E_ERROR,
-    'display_errors' => false,
+    'display_errors' => true,
 ];
