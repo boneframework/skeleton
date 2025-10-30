@@ -70,7 +70,19 @@ $image = $person->getImage() ? new Image('data/uploads/' . $person->getImage()) 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fa fa-gear"></i>
+                    <img src="<?= $image ? $image->outputBase64Src() : '' ?>" class="img-circle img-size-32" alt="User Image">
+                    <span class="mx-1">
+                        <?php
+                        $name = $user->getEmail();
+
+                        if ($person->getFirstname()) {
+                            $name = $person->getLastname() ? $person->getFirstname() . ' ' . $person->getLastname() : $person->getFirstname();
+                        }
+
+                        echo $name;
+                        ?>
+                    </span>
+                    <i class="fa fa-caret-down"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <a href="/user/edit-profile" class="dropdown-item text-center text-muted">
@@ -93,27 +105,12 @@ $image = $person->getImage() ? new Image('data/uploads/' . $person->getImage()) 
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <a href="/user/home" class="brand-link">
-            <img src="/img/skull_and_crossbones.png" alt="AdminLTE Logo" class="brand-image "
+            <img src="/img/skull_and_crossbones.png" alt="Bone Framework" class="brand-image "
                  style="opacity: .8">
             <span class="brand-text font-weight-light">Administration</span>
         </a>
 
         <div class="sidebar">
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="<?= $image ? $image->outputBase64Src() : '' ?>" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="/user/home" class="d-block"><?php
-                        $name = $user->getEmail();
-                        if ($person->getFirstname()) {
-                            $name = $person->getLastname() ? $person->getFirstname() . ' ' . $person->getLastname() : $person->getFirstname();
-                        }
-                        echo $name;
-                        ?></a>
-                </div>
-            </div>
-
             <nav class="mt-2">
                 <?= $this->adminLinks() ?>
             </nav>
