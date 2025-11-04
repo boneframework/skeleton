@@ -22,7 +22,7 @@
   "homepage": "https://github.com/boneframework",
   "license": "MIT",
   "require": {
-    "php": "^8.4",
+    "php": "^8.2",
     "ext-fileinfo": "*",
     "ext-intl": "*",
     "ext-json": "*",
