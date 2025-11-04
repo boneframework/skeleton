@@ -22,12 +22,12 @@
   "homepage": "https://github.com/boneframework",
   "license": "MIT",
   "require": {
-    "php": "^8.2",
+    "php": "^8.4",
     "ext-fileinfo": "*",
     "ext-intl": "*",
     "ext-json": "*",
     "ext-pdo": "*",
-    "boneframework/bone": "^3.11",
+    "boneframework/bone": "^3.12",
     "delboy1978uk/cdn": "^2.0",
     "delboy1978uk/image": "^2.1"
   },
