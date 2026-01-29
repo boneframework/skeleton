@@ -38,7 +38,7 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Run unit test suite
-        run: vendor/bin/codecept run Unit
+        run: XDEBUG_MODE=coverage vendor/bin/codecept run Unit --coverage --coverage-xml
 
       - name: Download Scrutinizer ocular.phar
         run: composer global require uma/ocular --no-interaction --prefer-dist
