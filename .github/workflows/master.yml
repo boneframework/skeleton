@@ -2,16 +2,16 @@ name: main
 
 on:
   push:
-    branches: [ master, dev-master ]
+    branches: [master, dev-master]
   pull_request:
-    branches: [ master, dev-master ]
+    branches: [master, dev-master]
 
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ['8.2', '8.3', '8.4']
+        php: ["8.2", "8.3", "8.4"]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,3 +39,9 @@ jobs:
 
       - name: Run unit test suite
         run: vendor/bin/codecept run Unit
+
+      - name: Download Scrutinizer ocular.phar
+        run: composer global require uma/ocular --no-interaction --prefer-dist
+
+      - name: Upload coverage
+        run: $HOME/.composer/vendor/bin/ocular code-coverage:upload --format=php-clover tests/_output/coverage.xml

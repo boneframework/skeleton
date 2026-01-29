@@ -3,6 +3,7 @@
 namespace Tests\Unit\App\Controller;
 
 use Barnacle\Container;
+use Bone\Contracts\Service\TranslatorInterface;
 use Bone\Controller\Init;
 use Bone\Http\Response\HtmlResponse;
 use Bone\Router\Router;
@@ -12,34 +13,24 @@ use Codeception\Test\Unit;
 use App\Controller\IndexController;
 use Laminas\Diactoros\ServerRequest;
 use Laminas\Diactoros\Uri;
-use Laminas\I18n\Translator\Translator;
 
 class IndexControllerTest extends Unit
 {
-    /**
-     * @var \Tests\Support\UnitTester
-     */
-    protected $tester;
+    protected IndexController $controller;
 
-    /** @var IndexController */
-    protected $controller;
-
-    /**
-     * @throws \Exception
-     */
-    protected function _before()
+    protected function _before(): void
     {
         $container = new Container();
 
         $router = new Router();
         $view = $this->getMockBuilder(ViewEngine::class)->getMock();
         $view->expects($this->any())->method('render')->willReturn('x');
-        $translator = $this->getMockBuilder(Translator::class)->getMock();
+        $translator = $this->getMockBuilder(TranslatorInterface::class)->getMock();
         $site = $this->getMockBuilder(SiteConfig::class)->disableOriginalConstructor()->getMock();
 
         $container[Router::class] = $router;
         $container[SiteConfig::class] = $site;
-        $container[Translator::class] = $translator;
+        $container[TranslatorInterface::class] = $translator;
 
         $view = $this->make(ViewEngine::class, ['render' => function() {
             return 'rendered content';
@@ -49,12 +40,12 @@ class IndexControllerTest extends Unit
         $this->controller = Init::controller($this->controller, $container);
     }
 
-    protected function _after()
+    protected function _after(): void
     {
         unset($this->controller);
     }
 
-    public function testIndexAction()
+    public function testIndexAction(): void
     {
         $this->assertInstanceOf(HtmlResponse::class, $this->controller->index(new ServerRequest([], [], new Uri('/')), []));
     }
